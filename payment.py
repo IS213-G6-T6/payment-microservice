@@ -64,7 +64,7 @@ def order():
         payment_method_types=['card'],
         mode='payment',
         success_url='http://localhost:5100/' + 'payment/success/' + orderID,
-        cancel_url='http://localhost:5100/' + 'payment/cancel',
+        cancel_url='http://localhost:5100/' + 'payment/cancel/' + orderID,
     )
 
     payment = Payment(paymentID=checkout_session.id, checkoutID="NA", orderID=orderID, amount=price/100)
@@ -73,7 +73,7 @@ def order():
 
     return jsonify(
             {
-                "code": 400,
+                "code": 200,
                 "url": checkout_session.url
             }
         )
